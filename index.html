@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>WM 2026 Alptraum-Simulator</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- ─── INTRO ─────────────────────────────────────────── -->
+        <div id="intro-screen" class="screen active">
+            <div class="intro-bg-stripes">
+                <div class="stripe s-black"></div>
+                <div class="stripe s-red"></div>
+                <div class="stripe s-gold"></div>
+            </div>
+            <div class="intro-content">
+                <p class="eyebrow">OFFIZIELLER PROMO-SIMULATOR ZUM SONG</p>
+                <h1 class="title-main">WM IN AMERIKA</h1>
+                <h2 class="title-sub">ALPTRAUM-SIMULATOR 2026</h2>
+                <p class="tagline">
+                    Überlebe das Fußball-Abenteuer in Amerika – Entscheidung für
+                    Entscheidung.
+                </p>
+                <div class="song-badge">
+                    <svg
+                        class="spotify-icon"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                    >
+                        <path
+                            d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+                        />
+                    </svg>
+                    <span
+                        >Basierend auf dem Song
+                        <strong>"WM in Amerika"</strong></span
+                    >
+                </div>
+                <button id="start-btn" class="btn-primary">
+                    <span>ALPTRAUM STARTEN</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+                <p class="disclaimer">
+                    * Rein satirisch. Kein echter Schaden beabsichtigt.
+                </p>
+            </div>
+        </div>
+
+        <!-- ─── GAME ──────────────────────────────────────────── -->
+        <div id="game-screen" class="screen">
+            <div class="game-layout">
+                <div class="game-header">
+                    <div class="location-tag">
+                        <span class="pin">📍</span>
+                        <span id="location-text">–</span>
+                    </div>
+                    <div class="score-block">
+                        <span class="score-label">ALPTRAUM-LEVEL</span>
+                        <div class="score-bar-wrap">
+                            <div
+                                id="score-fill"
+                                class="score-fill"
+                                style="width: 0%"
+                            ></div>
+                        </div>
+                        <span id="score-num" class="score-num">0</span>
+                    </div>
+                </div>
+
+                <div class="scene-card" id="scene-card">
+                    <div id="situation" class="situation"></div>
+                    <div id="flavor" class="flavor"></div>
+
+                    <div id="choices" class="choices"></div>
+
+                    <div id="consequence" class="consequence hidden"></div>
+                    <button id="next-btn" class="btn-next hidden">
+                        WEITER →
+                    </button>
+                </div>
+
+                <div id="lyric-bar" class="lyric-bar"></div>
+            </div>
+        </div>
+
+        <!-- ─── END ───────────────────────────────────────────── -->
+        <div id="end-screen" class="screen">
+            <div class="end-card">
+                <div class="end-icon" id="end-icon">💀</div>
+                <h2 id="end-title" class="end-title"></h2>
+                <div class="end-score-row">
+                    <span>Dein Alptraum-Score:</span>
+                    <span id="end-score" class="end-score-num">0</span>
+                    <span>/ 100</span>
+                </div>
+                <p id="end-msg" class="end-msg"></p>
+
+                <div class="spotify-cta" id="spotify-cta">
+                    <p class="spotify-cta-label">
+                        Den vollen Alptraum erleben:
+                    </p>
+                    <a
+                        id="spotify-link"
+                        href="https://open.spotify.com/prerelease/5ozHHc4oUmWecGIJEn9mTH?si=xW9-aIExS5i0TaD9cSEYrw"
+                        target="_blank"
+                        rel="noopener"
+                        class="spotify-btn"
+                    >
+                        <svg
+                            class="spotify-icon"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+                            />
+                        </svg>
+                        "WM IN AMERIKA" auf Spotify hören
+                    </a>
+                </div>
+
+                <button id="restart-btn" class="btn-secondary">
+                    ↩ NOCHMAL LEIDEN
+                </button>
+            </div>
+        </div>
+
+        <script src="game.js"></script>
+    </body>
+</html>
