@@ -4,29 +4,28 @@
 const SCENES = {
 
   ankunft: {
-    location: 'JFK Airport, New York – 16:30 Uhr',
-    situation:
-      'Euer Flieger landet in JFK nach 11 Stunden in der Economy. Das Spiel ist in 4 Stunden im MetLife Stadium, New Jersey. Ein Taxi kostet $200. Eine S-Bahn zum Stadion? Existiert nicht. Der nächste Bus fährt in 90 Minuten und braucht 3 Stunden.',
-    flavor_text: '"Welcome to America" – der erste Satz den ihr hört, kommt vom Taxifahrer der $50 Extragebühr für euer Gepäck verlangt.',
+    location: 'JFK Airport, New York',
+    question: 'Ankunft nach 11h Economy. Anstoß in 4 Stunden. Kein ÖPNV. Wie kommt ihr ins Stadion?',
+    image: 'images/ankunft.jpg',
     choices: [
       {
         label: 'A',
-        text: 'Uber teilen, $90 pro Person',
-        consequence: 'Das Uber kommt nach 45 Minuten. Der Fahrer fragt, ob ihr den Oktoberfest kennt und ob es wahr ist dass Deutsche kein Deodorant benutzen.',
+        text: 'Uber teilen – $90 p.P.',
+        consequence: 'Kommt nach 45 Min. Fahrer fragt, ob Oktoberfest wirklich "all day free beer" ist.',
         next: 'stadion',
         delta: 10,
       },
       {
         label: 'B',
-        text: 'Den Bus nehmen – Geld ist Geld',
-        consequence: '3 Stunden, 2 Umstiege, ein falscher Ausstieg. Ihr betretet das Stadion in der 38. Minute. Deutschland steht 0:2.',
+        text: 'Bus nehmen – Geld ist Geld',
+        consequence: '3 Stunden, 2 Umstiege, falsche Haltestelle. Ihr kommt in der 38. Minute an.',
         next: 'stadion_verspaetet',
         delta: 25,
       },
       {
         label: 'C',
-        text: 'Taxi für $250, ihr habt keine Nerven mehr',
-        consequence: 'Der Fahrer hört Country-Musik in Schmerzlautstärke und erklärt, dass er "a quarter German" ist. Sein Opa war aus "the Bavaria part of Germany".',
+        text: 'Taxi für $250 – keine Nerven mehr',
+        consequence: 'Fahrer hört Country in Schmerzlautstärke. Sein Opa war "ein Viertel Deutsch".',
         next: 'stadion',
         delta: 5,
       },
@@ -36,28 +35,27 @@ const SCENES = {
 
   stadion: {
     location: 'MetLife Stadium, New Jersey',
-    situation:
-      'Ihr betretet das Stadion. 82.000 Plätze, alle klimatisiert auf 18 Grad obwohl draußen 36 Grad sind. Die Hälfte der Fans trägt Trikots von Teams, die heute gar nicht spielen. Ein Mann aus Ohio dreht sich zu euch: "So you guys are from Germany? Do you know the Oktoberfest?"',
-    flavor_text: 'Das Stadion riecht nach Popcorn, Klimaanlage und Enttäuschung.',
+    question: '82.000 Plätze, 18°C Klimaanlage, draußen 36°C. Ohio-Fan dreht sich zu euch: "You know Oktoberfest?"',
+    image: 'images/stadion.jpg',
     choices: [
       {
         label: 'A',
         text: 'Freundlich erklären, dass ihr aus München kommt',
-        consequence: 'Er erzählt, sein Opa ist "ein Viertel Deutsch" und fragt ob ihr ein Dirndl besitzt.',
+        consequence: 'Er fragt, ob ihr ein Dirndl besitzt.',
         next: 'bier',
         delta: 8,
       },
       {
         label: 'B',
-        text: 'Das Gespräch höflich beenden',
-        consequence: 'Er dreht sich zu den Spaniern nebenan und fragt: "Is Barcelona in Italy?"',
+        text: 'Gespräch höflich beenden',
+        consequence: 'Er dreht sich zu den Spaniern: "Is Barcelona in Italy?"',
         next: 'bier',
         delta: 4,
       },
       {
         label: 'C',
-        text: 'Erklären, dass nicht alle Deutschen gleich sind',
-        consequence: 'Er nickt verständnisvoll und fragt: "But do you guys all like Rammstein though?"',
+        text: '"Nicht alle Deutschen sind gleich."',
+        consequence: '"But do you guys all like Rammstein though?"',
         next: 'bier',
         delta: 12,
       },
@@ -66,29 +64,28 @@ const SCENES = {
   },
 
   stadion_verspaetet: {
-    location: 'MetLife Stadium, New Jersey – 38. Minute',
-    situation:
-      'Ihr stolpert in das Stadion. Deutschland steht 0:2. Ordner blockieren euren Weg: kein Einlass während laufendem Spiel. Ihr steht im Korridor neben einem Bier-Stand. Deutschland schießt jetzt 0:3.',
-    flavor_text: '"Öffentliche Verkehrsmittel existieren nicht in diesem Land."',
+    location: 'MetLife Stadium – 38. Minute',
+    question: 'Deutschland steht 0:3. Ordner blockiert euren Eingang. Kein Einlass während des Spiels.',
+    image: 'images/stadion_verspaetet.jpg',
     choices: [
       {
         label: 'A',
-        text: 'Geduldig bis zur Halbzeit warten',
-        consequence: 'Ihr wartet 25 Minuten neben einem Mann der laut Chips kaut. Er erklärt euch die Offsideregel falsch.',
+        text: 'Geduldig bis Halbzeit warten',
+        consequence: 'Neben euch kaut jemand 25 Min. laut Chips und erklärt euch Abseits falsch.',
         next: 'bier',
         delta: 18,
       },
       {
         label: 'B',
-        text: 'Den Ordner mit $20 zu überreden versuchen',
-        consequence: 'Er nimmt das Geld. Dann sagt er: "No can do, buddy." Er behält das Geld.',
+        text: 'Ordner mit $20 überreden',
+        consequence: 'Er nimmt das Geld. Sagt dann: "No can do, buddy." Behält das Geld.',
         next: 'bier',
         delta: 28,
       },
       {
         label: 'C',
         text: 'Auf Deutsch laut schimpfen',
-        consequence: 'Keiner versteht euch, aber drei Leute filmen es für TikTok. Am nächsten Tag habt ihr 40.000 Views.',
+        consequence: 'Keiner versteht euch. Drei Leute filmen für TikTok. 40k Views bis morgen.',
         next: 'bier',
         delta: 15,
       },
@@ -97,29 +94,28 @@ const SCENES = {
   },
 
   bier: {
-    location: 'Stadion Bier-Stand – Süd-Korridor',
-    situation:
-      'Das Schild leuchtet: "BUD LIGHT $18 · MILLER LITE $18 · CRAFT IPA $23". Der Becher ist kleiner als eine deutsche Kindersaftglas. Der Mann vor euch bestellt fünf und bezahlt mit schwarzer Kreditkarte ohne Zucken. Der Barkeeper fragt ob ihr ein "Soccer Fan from Europe" seid und ob Bier in Deutschland wirklich "like, everywhere, all day" frei verfügbar ist.',
-    flavor_text: '"Amerikanisches Pisswasser-Bier..."',
+    location: 'Stadion Bier-Stand',
+    question: 'BUD LIGHT $18. Der Becher: Kindergartengröße. Was bestellt ihr?',
+    image: 'images/bier.jpg',
     choices: [
       {
         label: 'A',
-        text: '$18 Bud Light kaufen und tapfer schlucken',
-        consequence: 'Es schmeckt wie kaltes Wasser mit einem Hauch Traurigkeit. Ihr trinkt es trotzdem, komplett.',
+        text: '$18 Bud Light – in Gottes Namen',
+        consequence: 'Schmeckt wie Wasser mit einem Hauch Traurigkeit. Ihr trinkt ihn komplett.',
         next: 'essen',
         delta: 20,
       },
       {
         label: 'B',
-        text: '$23 Craft IPA kaufen – "wenigstens gut"',
-        consequence: 'Es heißt "Texas Sunset IPA" und schmeckt nach Grapefruit, Enttäuschung und einem Startup der pleite gegangen ist.',
+        text: '$23 Craft IPA – "wenigstens gut"',
+        consequence: '"Texas Sunset IPA" schmeckt nach Grapefruit und gescheitertem Startup.',
         next: 'essen',
         delta: 15,
       },
       {
         label: 'C',
-        text: 'Empört abwenden, kein Bier kaufen',
-        consequence: 'Ihr seid nüchtern und umgeben von Bierduft. Das ist die schlimmste Option.',
+        text: 'Kein Bier, empört abwenden',
+        consequence: 'Nüchtern, umgeben von Bierdunst. Das ist die schlimmste Option.',
         next: 'essen',
         delta: 5,
       },
@@ -129,28 +125,27 @@ const SCENES = {
 
   essen: {
     location: 'Stadion Food Court',
-    situation:
-      'Hunger. Das Angebot: "Hot Dog $15", "Nachos mit Käse-Sauce $14", "AUTHENTIC GERMAN BRATWURST $17". Ihr lest die Zutaten der Bratwurst: Pork & Corn Filler, Artificial Bratwurst Flavoring, American Spice Blend. Daneben: ein Drive-in Fast-Food-Anhänger einer bekannten Kette, direkt im Stadion aufgebaut. Der Slogan: "Taste the Freedom."',
-    flavor_text: '"Drive-in Essen schmeckt nach nichts hier..."',
+    question: 'Hunger. Das Angebot: "AUTHENTIC GERMAN BRATWURST $17" (Zutaten: Corn Filler, Artificial Flavoring). Was esst ihr?',
+    image: 'images/essen.jpg',
     choices: [
       {
         label: 'A',
-        text: 'Hot Dog für $15, der klassische Fehler',
-        consequence: 'Er ist okay. Das ist das Traurigste daran – dass er okay ist.',
+        text: 'Hot Dog $15 – der sichere Fehler',
+        consequence: 'Er ist okay. Das ist das Traurigste daran.',
         next: 'kommentator',
         delta: 10,
       },
       {
         label: 'B',
-        text: '"Authentic German Bratwurst" bestellen',
-        consequence: 'Sie schmeckt als hätte Bockwurst ein Kind mit Kaugummi bekommen. Ihr weint lautlos.',
+        text: '"Authentic German Bratwurst" $17',
+        consequence: 'Schmeckt als hätte Bockwurst ein Kind mit Kaugummi bekommen.',
         next: 'kommentator',
         delta: 26,
       },
       {
         label: 'C',
         text: 'Freedom Burger im Stadion-McDonald\'s',
-        consequence: 'Er kommt in einem Plastikbehälter. Die Pommes heißen "Freedom Fries". Es gibt keine Mayonnaise.',
+        consequence: 'Plastikbehälter. Keine Mayonnaise. Die Pommes heißen "Freedom Fries".',
         next: 'kommentator',
         delta: 14,
       },
@@ -160,28 +155,27 @@ const SCENES = {
 
   kommentator: {
     location: 'Euer Platz – 2. Halbzeit',
-    situation:
-      'Deutschland schießt ein Tor. Jubel. Dann die Leinwand: der amerikanische TV-Kommentator schreit: "AND MÜLLER SCORES! That\'s like the soccer version of a TOUCHDOWN! Germany just got themselves a GOAL POINT, folks!" Neben euch hält ein Mann aus Ohio ein handgemachtes Schild: "GO SOCCER". Er fragt euch, wer gerade spielt.',
-    flavor_text: '"Obwohl sie Fußball nicht kapieren..."',
+    question: 'Deutschland trifft. Kommentator auf der Leinwand: "GOAL POINT! That\'s like the soccer version of a TOUCHDOWN!" Wie reagiert ihr?',
+    image: 'images/kommentator.jpg',
     choices: [
       {
         label: 'A',
-        text: 'Tief durchatmen und schweigen',
-        consequence: 'Ihr überlebt diesen Moment. Knapp. Innerlich stirbt etwas.',
+        text: 'Tief durchatmen, schweigen',
+        consequence: 'Ihr überlebt. Innerlich stirbt etwas.',
         next: 'praesident',
         delta: 5,
       },
       {
         label: 'B',
         text: 'Dem Nachbarn erklären was ein Tor ist',
-        consequence: 'Er hört aufmerksam zu. Dann fragt er: "So it\'s kind of like a home run?" Ihr erklärt weiter. "Like a basket?" Er meint es ernst.',
+        consequence: '"So it\'s kind of like a home run?" Er meint es ernst.',
         next: 'praesident',
         delta: 15,
       },
       {
         label: 'C',
-        text: 'Auf Twitter über den Kommentator schimpfen',
-        consequence: 'Euer Tweet geht viral. Eine amerikanische Zeitung titelt: "Angry German Soccer Purists Ruin World Cup Spirit." Mit Foto.',
+        text: 'Auf Twitter schimpfen',
+        consequence: 'Geht viral. Zeitung titelt: "Angry German Soccer Purists Ruin World Cup Spirit."',
         next: 'praesident',
         delta: 22,
       },
@@ -191,59 +185,57 @@ const SCENES = {
 
   praesident: {
     location: 'MetLife Stadium – Halbzeitshow',
-    situation:
-      'Dramatische Musik. Alle Bildschirme gleichzeitig: Ein goldener Rahmen, ein bekanntes Gesicht. Eine Stimme: "Ladies and gentlemen – PRÄSIDENT X!" Applaus. "This is officially the GREATEST World Cup in the history of the UNIVERSE. Maybe even better than the Super Bowl! Nobody does World Cups better than us, believe me!" Stehende Ovationen. Hälfte des Stadions jubelt. Die andere Hälfte filmt.',
-    flavor_text: '"Doch Präsident X gibt weiter Befehle..."',
+    question: 'Alle Bildschirme gleichzeitig: Präsident T. "This is the GREATEST World Cup in the history of the UNIVERSE!" Was tut ihr?',
+    image: 'images/praesident.jpg',
     choices: [
       {
         label: 'A',
-        text: 'Mitklatschen – alle anderen klatschen auch',
-        consequence: 'Ihr klatscht. Ihr hasst euch dafür. Ihr klatscht trotzdem weiter. Klassische Peer Pressure.',
+        text: 'Mitklatschen – alle klatschen',
+        consequence: 'Ihr klatscht. Ihr hasst euch. Ihr klatscht weiter.',
         next: 'finale',
         delta: 25,
       },
       {
         label: 'B',
         text: 'Demonstrativ sitzen bleiben',
-        consequence: 'Ein Sicherheitsmann gibt euch einen sehr langen Blick. Ihr klatscht doch. Mit einem Lächeln das sagt: "Alles in Ordnung hier."',
+        consequence: 'Sicherheitsmann gibt euch einen langen Blick. Ihr klatscht doch.',
         next: 'finale',
         delta: 14,
       },
       {
         label: 'C',
-        text: 'Auf die Toilette flüchten bis es vorbei ist',
-        consequence: 'Die Toiletten sind voll. 20 Minuten Wartezeit. Als ihr zurückkommt, läuft die Rede noch.',
+        text: 'Auf Toilette flüchten bis es vorbei ist',
+        consequence: '20 Min. Warteschlange. Als ihr zurückkommt, läuft die Rede noch.',
         next: 'finale',
         delta: 18,
       },
     ],
-    lyric: '"Das ist keine WM mehr, das ist ein AlpTraum..."',
+    lyric: '"Doch Präsident T gibt weiter Befehle..."',
   },
 
   finale: {
     location: 'Nach dem Abpfiff – 22:45 Uhr',
-    situation:
-      'Das Spiel ist vorbei. Ihr wollt nach Hause. Die Uber-App zeigt: 4× Surge Pricing, $185 pro Person, 72 Minuten Wartezeit. Ein Bus fährt nicht mehr. Das nächste Taxi ist weg. 70.000 Menschen verlassen gleichzeitig das Stadion. Es gibt keinen Plan B.',
-    flavor_text: '"Das ist keine WM mehr, das ist ein Alptraum."',
+    question: '70.000 Menschen raus. Uber: 4× Preis, $185 p.P., 78 Min. Wartezeit. Kein Bus mehr. Was jetzt?',
+    image: 'images/finale.jpg',
     choices: [
       {
         label: 'A',
-        text: '$185 Uber bezahlen, Würde ist egal',
-        consequence: 'Der Fahrer hört Nonstop-Country und erzählt, sein Lieblingsverein ist "the soccer team from, uh, Manchester... City? Village?"',
+        text: '$185 Uber – Würde ist egal',
+        consequence: 'Fahrer hört Country-Nonstop: "Are you the soccer guys from Europe?"',
         next: 'end',
         delta: 10,
       },
       {
         label: 'B',
-        text: 'Im Stadion übernachten bis der Surge weg ist',
-        consequence: 'Sicherheitsdienst findet euch um 2:30 Uhr morgens. Die Bude schloss um 1. Uber: jetzt $220.',
+        text: 'Im Stadion warten bis Surge weg ist',
+        consequence: 'Security findet euch um 2:30 Uhr. Das Stadion schloss um 1. Uber jetzt $220.',
         next: 'end',
         delta: 32,
       },
       {
         label: 'C',
-        text: 'Zu Fuß zum Hotel – 9 km, wie schwer kann es sein',
-        consequence: 'Nach 600 Metern endet der Bürgersteig. Es gibt keinen Bürgersteig. Das ist kein Bug, das ist Amerika.',
+        text: 'Zu Fuß – 9 km, wie schwer kann es sein',
+        consequence: 'Nach 600m endet der Bürgersteig. Es gibt keinen Bürgersteig. Das ist kein Bug.',
         next: 'end',
         delta: 22,
       },
@@ -258,36 +250,32 @@ const ENDINGS = [
     max: 35,
     icon: '🏆',
     title: 'ÜBERRASCHEND ÜBERLEBT',
-    msg: 'Ihr habt den amerikanischen Alptraum mit unerwarteter Fassung getragen. Entweder seid ihr echte Stoiker – oder ihr habt geschummelt.',
+    msg: 'Ihr habt den amerikanischen Alptraum mit unerwarteter Fassung getragen. Entweder echte Stoiker – oder ihr habt geschummelt.',
   },
   {
     max: 60,
     icon: '😬',
     title: 'MITTELGROSSE KATASTROPHE',
-    msg: 'Die WM war ungefähr so, wie ihr es erwartet habt: teuer, laut, und kulturell fragwürdig. Ihr werdet nicht zurückfahren.',
+    msg: 'Teuer, laut, kulturell fragwürdig. Genau so wie erwartet. Ihr fahrt nicht wieder hin.',
   },
   {
     max: 80,
     icon: '😱',
     title: 'SCHWERER ALPTRAUM',
-    msg: 'Diese WM wird euch in Träumen verfolgen. Nicht die gute Art von Träumen. Ihr hört "Go Soccer!" in eurem Kopf wenn ihr schlafen wollt.',
+    msg: 'Diese WM verfolgt euch in Träumen. Nicht die gute Art. Ihr hört "GOAL POINT!" wenn ihr einschlafen wollt.',
   },
   {
     max: 100,
     icon: '💀',
     title: 'VOLLSTÄNDIGER ALPTRAUM',
-    msg: 'Herzlichen Glückwunsch – ihr habt die schlimmstmögliche WM-Erfahrung vollständig abgeschlossen. Das ist statistisch fast unmöglich. Respekt.',
+    msg: 'Glückwunsch – die schlimmstmögliche WM-Erfahrung, komplett abgeschlossen. Statistisch fast unmöglich.',
   },
 ];
 
 // ─── STATE ───────────────────────────────────────────────────────────────────
 let state = { score: 0, pendingNext: null };
 
-// ─── DOM ─────────────────────────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
-
-function show(id) { $(id).classList.remove('hidden'); $(id).classList.add('active'); }
-function hide(id) { $(id).classList.remove('active'); }
 
 function switchScreen(from, to) {
   $(from).classList.remove('active');
@@ -314,9 +302,13 @@ function loadScene(id) {
   if (!sc) { endGame(); return; }
 
   $('location-text').textContent = sc.location;
-  $('situation').textContent = sc.situation;
-  $('flavor').textContent = sc.flavor_text;
+  $('scene-question').textContent = sc.question;
   $('lyric-bar').textContent = sc.lyric;
+
+  // Image
+  const img = $('scene-img');
+  img.src = sc.image;
+  img.alt = sc.location;
 
   // Choices
   const choicesEl = $('choices');
@@ -335,15 +327,13 @@ function loadScene(id) {
   $('next-btn').classList.add('hidden');
   $('next-btn').textContent = 'WEITER →';
 
-  // Animate card
   const card = $('scene-card');
   card.style.animation = 'none';
-  card.offsetHeight; // reflow
+  card.offsetHeight;
   card.style.animation = 'fadeUp 0.4s ease both';
 }
 
 function pick(btn, choice) {
-  // Disable all choices
   document.querySelectorAll('.choice-btn').forEach(b => {
     b.disabled = true;
     if (b === btn) b.classList.add('selected');
@@ -355,10 +345,7 @@ function pick(btn, choice) {
   $('consequence').classList.remove('hidden');
 
   state.pendingNext = choice.next;
-
-  if (choice.next === 'end') {
-    $('next-btn').textContent = 'ZUM FAZIT →';
-  }
+  if (choice.next === 'end') $('next-btn').textContent = 'ZUM FAZIT →';
   $('next-btn').classList.remove('hidden');
 }
 
@@ -382,7 +369,7 @@ function restartGame() {
   loadScene('ankunft');
 }
 
-// ─── BOOT ─────────────────────────────────────────────────────────────────────
+// ─── BOOT ────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   $('start-btn').addEventListener('click', () => {
     switchScreen('intro-screen', 'game-screen');
@@ -390,11 +377,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   $('next-btn').addEventListener('click', () => {
-    if (state.pendingNext === 'end') {
-      endGame();
-    } else if (state.pendingNext) {
-      loadScene(state.pendingNext);
-    }
+    if (state.pendingNext === 'end') endGame();
+    else if (state.pendingNext) loadScene(state.pendingNext);
   });
 
   $('restart-btn').addEventListener('click', restartGame);

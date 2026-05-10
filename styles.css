@@ -203,25 +203,49 @@ body {
   background: var(--near-black);
   border: 1px solid var(--gray);
   border-radius: 10px;
-  padding: 1.75rem;
+  padding: 1.25rem 1.25rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
-.situation {
+.scene-question {
   font-size: 1rem;
-  line-height: 1.7;
-  color: #ddd;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--white);
 }
 
-.flavor {
-  font-size: 0.88rem;
-  font-style: italic;
-  color: var(--gold-dim);
-  border-left: 3px solid var(--gold);
-  padding-left: 0.85rem;
-  line-height: 1.6;
+/* Image */
+.scene-img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 7px;
+  overflow: hidden;
+  background: #1a1a1a;
+  position: relative;
+}
+
+.scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.scene-img-fallback {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    #111 0px,
+    #111 10px,
+    #161616 10px,
+    #161616 20px
+  );
+  z-index: 0;
 }
 
 /* Choices */
