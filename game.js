@@ -290,10 +290,12 @@ function addScore(delta) {
 
 function renderScore() {
   const s = state.score;
+  const cls = s >= 65 ? ' high' : s >= 35 ? ' medium' : '';
   $('score-num').textContent = s;
+  $('score-num').className = 'score-num' + cls;
   const fill = $('score-fill');
   fill.style.width = s + '%';
-  fill.className = 'score-fill' + (s >= 65 ? ' high' : s >= 35 ? ' medium' : '');
+  fill.className = 'score-fill' + cls;
 }
 
 // ─── SCENE ───────────────────────────────────────────────────────────────────
