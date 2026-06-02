@@ -371,6 +371,17 @@ function restartGame() {
   loadScene('ankunft');
 }
 
+// ─── MODALS ──────────────────────────────────────────────────────────────────
+function openModal(name) {
+  $('modal-' + name).classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(name) {
+  $('modal-' + name).classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
 // ─── BOOT ────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   $('start-btn').addEventListener('click', () => {
@@ -384,4 +395,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   $('restart-btn').addEventListener('click', restartGame);
+
+  // Legal modal open
+  document.querySelectorAll('.legal-link').forEach(btn => {
+    btn.addEventListener('click', () => openModal(btn.dataset.modal));
+  });
+
+  // Legal modal close buttons
+  document.querySelectorAll('.modal-close').forEach(btn => {
+    btn.addEventListener('click', () => closeModal(btn.dataset.close));
+  });
+
+  // Close on backdrop click
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeModal(overlay.id.replace('modal-', ''));
+    });
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay:not(.hidden)').forEach(overlay => {
+        closeModal(overlay.id.replace('modal-', ''));
+      });
+    }
+  });
 });

@@ -28,28 +28,22 @@
                     Entscheidung.
                 </p>
                 <div class="song-badge">
-                    <svg
-                        class="spotify-icon"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                    >
-                        <path
-                            d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
-                        />
+                    <svg class="spotify-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
                     </svg>
-                    <span
-                        >Basierend auf dem Song
-                        <strong>"WM in Amerika"</strong></span
-                    >
+                    <span>Basierend auf dem Song <strong>"WM in Amerika"</strong></span>
                 </div>
                 <button id="start-btn" class="btn-primary">
                     <span>ALPTRAUM STARTEN</span>
                     <span class="btn-arrow">→</span>
                 </button>
-                <p class="disclaimer">
-                    * Rein satirisch. Kein echter Schaden beabsichtigt.
-                </p>
+                <p class="disclaimer">* Rein satirisch. Kein echter Schaden beabsichtigt.</p>
             </div>
+            <footer class="legal-footer">
+                <button class="legal-link" data-modal="impressum">Impressum</button>
+                <span class="legal-sep">|</span>
+                <button class="legal-link" data-modal="datenschutz">Datenschutz</button>
+            </footer>
         </div>
 
         <!-- ─── GAME ──────────────────────────────────────────── -->
@@ -60,6 +54,11 @@
                         <span class="pin">📍</span>
                         <span id="location-text">–</span>
                     </div>
+                </div>
+
+                <div class="scene-card" id="scene-card">
+                    <p id="scene-question" class="scene-question"></p>
+
                     <div class="score-block">
                         <span class="score-label">ALPTRAUM-LEVEL</span>
                         <div class="score-num-wrap">
@@ -67,17 +66,9 @@
                             <span class="score-num-max">/100</span>
                         </div>
                         <div class="score-bar-wrap">
-                            <div
-                                id="score-fill"
-                                class="score-fill"
-                                style="width: 0%"
-                            ></div>
+                            <div id="score-fill" class="score-fill" style="width: 0%"></div>
                         </div>
                     </div>
-                </div>
-
-                <div class="scene-card" id="scene-card">
-                    <p id="scene-question" class="scene-question"></p>
 
                     <div class="scene-img-wrap">
                         <img id="scene-img" class="scene-img" src="" alt="" />
@@ -87,9 +78,7 @@
                     <div id="choices" class="choices"></div>
 
                     <div id="consequence" class="consequence hidden"></div>
-                    <button id="next-btn" class="btn-next hidden">
-                        WEITER →
-                    </button>
+                    <button id="next-btn" class="btn-next hidden">WEITER →</button>
                 </div>
 
                 <div id="lyric-bar" class="lyric-bar"></div>
@@ -109,9 +98,7 @@
                 <p id="end-msg" class="end-msg"></p>
 
                 <div class="spotify-cta" id="spotify-cta">
-                    <p class="spotify-cta-label">
-                        Den vollen Alptraum erleben:
-                    </p>
+                    <p class="spotify-cta-label">Den vollen Alptraum erleben:</p>
                     <a
                         id="spotify-link"
                         href="https://open.spotify.com/prerelease/5ozHHc4oUmWecGIJEn9mTH?si=xW9-aIExS5i0TaD9cSEYrw"
@@ -119,22 +106,61 @@
                         rel="noopener"
                         class="spotify-btn"
                     >
-                        <svg
-                            class="spotify-icon"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path
-                                d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
-                            />
+                        <svg class="spotify-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
                         </svg>
                         "WM IN AMERIKA" auf Spotify hören
                     </a>
                 </div>
 
-                <button id="restart-btn" class="btn-secondary">
-                    ↩ NOCHMAL LEIDEN
-                </button>
+                <button id="restart-btn" class="btn-secondary">↩ NOCHMAL LEIDEN</button>
+
+                <footer class="legal-footer">
+                    <button class="legal-link" data-modal="impressum">Impressum</button>
+                    <span class="legal-sep">|</span>
+                    <button class="legal-link" data-modal="datenschutz">Datenschutz</button>
+                </footer>
+            </div>
+        </div>
+
+        <!-- ─── MODAL IMPRESSUM ───────────────────────────────── -->
+        <div id="modal-impressum" class="modal-overlay hidden" role="dialog" aria-modal="true">
+            <div class="modal-box">
+                <button class="modal-close" data-close="impressum">✕</button>
+                <h2 class="modal-title">Impressum</h2>
+
+                <h3 class="modal-section">Angaben gemäß § 5 TMG</h3>
+                <p>Max Felle<br>Daimlerstrasse 115<br>70372 Stuttgart (Bad Cannstatt)<br>Deutschland</p>
+
+                <h3 class="modal-section">Kontakt</h3>
+                <p>E-Mail: <a href="mailto:derdildi@googlemail.com">derdildi@googlemail.com</a></p>
+
+                <h3 class="modal-section">Hinweis</h3>
+                <p>Diese Website dient ausschließlich künstlerischen und promotionalen Zwecken.</p>
+            </div>
+        </div>
+
+        <!-- ─── MODAL DATENSCHUTZ ─────────────────────────────── -->
+        <div id="modal-datenschutz" class="modal-overlay hidden" role="dialog" aria-modal="true">
+            <div class="modal-box">
+                <button class="modal-close" data-close="datenschutz">✕</button>
+                <h2 class="modal-title">Datenschutzerklärung</h2>
+
+                <h3 class="modal-section">Verantwortlicher</h3>
+                <p>Max Felle, Daimlerstrasse 115, 70372 Stuttgart (Bad Cannstatt)<br>
+                E-Mail: <a href="mailto:derdildi@googlemail.com">derdildi@googlemail.com</a></p>
+
+                <h3 class="modal-section">Erhebung von Daten</h3>
+                <p>Diese Website erhebt keine personenbezogenen Daten. Es werden keine Cookies gesetzt, kein Tracking durchgeführt und keine Nutzerdaten gespeichert.</p>
+
+                <h3 class="modal-section">Hosting</h3>
+                <p>Die Website wird auf einem Server in der EU gehostet. Beim Aufruf der Seite werden vom Webserver technisch bedingt die IP-Adresse und der Zeitpunkt des Abrufs kurzzeitig verarbeitet. Diese Daten werden nicht gespeichert.</p>
+
+                <h3 class="modal-section">Externer Link — Spotify</h3>
+                <p>Der Button „WM IN AMERIKA auf Spotify hören" führt zu Spotify (Spotify AB). Durch Klick auf diesen Button verlässt du diese Website. Spotify kann dabei Daten verarbeiten. Weitere Informationen: <a href="https://www.spotify.com/de/legal/privacy-policy/" target="_blank" rel="noopener">spotify.com/legal/privacy-policy</a></p>
+
+                <h3 class="modal-section">Deine Rechte</h3>
+                <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner Daten gemäß DSGVO. Kontakt: <a href="mailto:derdildi@googlemail.com">derdildi@googlemail.com</a></p>
             </div>
         </div>
 
